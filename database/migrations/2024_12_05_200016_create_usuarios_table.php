@@ -12,13 +12,15 @@ class CreateUsuariosTable extends Migration
             $table->id('id_usuario');
             $table->string('nome', 100);
             $table->string('email_institucional', 100)->unique();
-            $table->string('matricula', 20)->unique()->nullable();
+            $table->string('matricula', 20)->unique();
             $table->string('senha');
-            $table->enum('tipo_usuario', ['aluno', 'docente', 'tecnico-administrativo']);
-            $table->string('curso', 100)->nullable();
+            $table->enum('tipo_usuario', ['aluno', 'tecnico-administrativo']);
+            $table->unsignedBigInteger('id_curso')->nullable(); // Aqui a coluna de chave estrangeira
             $table->string('turma', 50)->nullable();
+            $table->foreign('id_curso')->references('id_curso')->on('cursos')->onDelete('set null');
             $table->timestamps();
         });
+        
     }
 
     public function down()
@@ -26,4 +28,3 @@ class CreateUsuariosTable extends Migration
         Schema::dropIfExists('usuarios');
     }
 }
-

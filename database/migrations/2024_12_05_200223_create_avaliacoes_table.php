@@ -25,4 +25,3 @@ class CreateAvaliacoesTable extends Migration
         Schema::dropIfExists('avaliacoes');
     }
 }
-
