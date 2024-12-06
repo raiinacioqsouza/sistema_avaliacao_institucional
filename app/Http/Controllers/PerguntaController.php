@@ -9,42 +9,42 @@ class PerguntaController extends Controller
 {
     public function index()
     {
-        return Pergunta::with('avaliacao')->get(); // Inclui a avaliação relacionada
+        return Pergunta::with('avaliacao')->get();
     }
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'id_avaliacao' => 'required|exists:avaliacoes,id_avaliacao',
-            'texto_pergunta' => 'required|string|max:255',
-            'tipo_resposta' => 'required|string|max:50',
+        $request->validate([
+            'avaliacao_id' => 'required|exists:avaliacoes,id',
+            'texto_pergunta' => 'required|string',
+            'tipo_resposta' => 'required|in:multipla_escolha,texto,numerica',
         ]);
 
-        return Pergunta::create($validated);
+        return Pergunta::create($request->all());
     }
 
     public function show($id)
     {
-        return Pergunta::with('avaliacao')->findOrFail($id);
+        return Pergunta::findOrFail($id);
     }
 
     public function update(Request $request, $id)
     {
-        $pergunta = Pergunta::findOrFail($id);
-        $validated = $request->validate([
-            'id_avaliacao' => 'sometimes|exists:avaliacoes,id_avaliacao',
-            'texto_pergunta' => 'sometimes|string|max:255',
-            'tipo_resposta' => 'sometimes|string|max:50',
+        $request->validate([
+            'avaliacao_id' => 'required|exists:avaliacoes,id',
+            'texto_pergunta' => 'required|string',
+            'tipo_resposta' => 'required|in:multipla_escolha,texto,numerica',
         ]);
 
-        $pergunta->update($validated);
+        $pergunta = Pergunta::findOrFail($id);
+        $pergunta->update($request->all());
+
         return $pergunta;
     }
 
     public function destroy($id)
     {
-        $pergunta = Pergunta::findOrFail($id);
-        $pergunta->delete();
+        Pergunta::destroy($id);
         return response()->noContent();
     }
 }

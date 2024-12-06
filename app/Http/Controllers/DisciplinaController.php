@@ -9,38 +9,40 @@ class DisciplinaController extends Controller
 {
     public function index()
     {
-        return Disciplina::all(); // Retorna todas as disciplinas
+        return Disciplina::with('curso')->get();  // Relaciona com a tabela 'cursos'
     }
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nome_disciplina' => 'required|string|max:255|unique:disciplinas,nome_disciplina',
+        $request->validate([
+            'nome_disciplina' => 'required|string|max:100',
+            'id_curso' => 'required|exists:cursos,id_curso',
         ]);
 
-        return Disciplina::create($validated);
+        return Disciplina::create($request->all());
     }
 
     public function show($id)
     {
-        return Disciplina::findOrFail($id);
+        return Disciplina::with('curso')->findOrFail($id);
     }
 
     public function update(Request $request, $id)
     {
-        $disciplina = Disciplina::findOrFail($id);
-        $validated = $request->validate([
-            'nome_disciplina' => 'sometimes|string|max:255|unique:disciplinas,nome_disciplina,' . $id . ',id_disciplina',
+        $request->validate([
+            'nome_disciplina' => 'required|string|max:100',
+            'id_curso' => 'required|exists:cursos,id_curso',
         ]);
 
-        $disciplina->update($validated);
+        $disciplina = Disciplina::findOrFail($id);
+        $disciplina->update($request->all());
+
         return $disciplina;
     }
 
     public function destroy($id)
     {
-        $disciplina = Disciplina::findOrFail($id);
-        $disciplina->delete();
+        Disciplina::destroy($id);
         return response()->noContent();
     }
 }

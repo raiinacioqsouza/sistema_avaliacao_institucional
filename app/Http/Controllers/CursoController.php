@@ -9,38 +9,40 @@ class CursoController extends Controller
 {
     public function index()
     {
-        return Curso::all(); // Retorna todos os cursos
+        return Curso::all();
     }
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nome_curso' => 'required|string|max:255|unique:cursos,nome_curso',
+        $request->validate([
+            'nome_curso' => 'required|string|max:100',
+            'descricao' => 'nullable|string',
         ]);
 
-        return Curso::create($validated);
+        return Curso::create($request->all());
     }
 
     public function show($id)
     {
-        return Curso::findOrFail($id); // Retorna um curso específico
+        return Curso::findOrFail($id);
     }
 
     public function update(Request $request, $id)
     {
-        $curso = Curso::findOrFail($id);
-        $validated = $request->validate([
-            'nome_curso' => 'sometimes|string|max:255|unique:cursos,nome_curso,' . $id . ',id_curso',
+        $request->validate([
+            'nome_curso' => 'required|string|max:100',
+            'descricao' => 'nullable|string',
         ]);
 
-        $curso->update($validated);
+        $curso = Curso::findOrFail($id);
+        $curso->update($request->all());
+
         return $curso;
     }
 
     public function destroy($id)
     {
-        $curso = Curso::findOrFail($id);
-        $curso->delete();
+        Curso::destroy($id);
         return response()->noContent();
     }
 }

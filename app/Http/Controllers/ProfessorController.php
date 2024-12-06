@@ -14,36 +14,35 @@ class ProfessorController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'id_usuario' => 'required|exists:usuarios,id_usuario|unique:professores,id_usuario',
-            'titulacao' => 'nullable|string|max:255',
-            'area_especializacao' => 'nullable|string|max:255',
+        $request->validate([
+            'id_usuario' => 'required|exists:usuarios,id_usuario',
+            'especialidade' => 'nullable|string|max:100',
         ]);
 
-        return Professor::create($validated);
+        return Professor::create($request->all());
     }
 
     public function show($id)
     {
-        return Professor::with('usuario')->findOrFail($id); // Retorna um professor específico
+        return Professor::with('usuario')->findOrFail($id);
     }
 
     public function update(Request $request, $id)
     {
-        $professor = Professor::findOrFail($id);
-        $validated = $request->validate([
-            'titulacao' => 'sometimes|string|max:255',
-            'area_especializacao' => 'sometimes|string|max:255',
+        $request->validate([
+            'id_usuario' => 'required|exists:usuarios,id_usuario',
+            'especialidade' => 'nullable|string|max:100',
         ]);
 
-        $professor->update($validated);
+        $professor = Professor::findOrFail($id);
+        $professor->update($request->all());
+
         return $professor;
     }
 
     public function destroy($id)
     {
-        $professor = Professor::findOrFail($id);
-        $professor->delete();
+        Professor::destroy($id);
         return response()->noContent();
     }
 }

@@ -10,7 +10,9 @@ class CreateAvaliacaoProfessorDisciplinaTable extends Migration
     {
         Schema::create('avaliacao_professor_disciplina', function (Blueprint $table) {
             $table->foreignId('id_avaliacao')->constrained('avaliacoes')->onDelete('cascade');
-            $table->foreignId('id_disciplina_professor')->constrained('professores_disciplinas')->onDelete('cascade');
+            $table->foreignId('id_disciplina_professor')
+                  ->constrained('professores_disciplinas', 'id_disciplina_professor') // Especificando a coluna correta
+                  ->onDelete('cascade');
             $table->primary(['id_avaliacao', 'id_disciplina_professor']);
             $table->timestamps();
         });

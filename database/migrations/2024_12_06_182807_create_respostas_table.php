@@ -22,7 +22,10 @@ class CreateRespostasTable extends Migration
     }
 
     public function down()
-    {
-        Schema::dropIfExists('respostas');
-    }
+{
+    Schema::disableForeignKeyConstraints();
+    Schema::dropIfExists('respostas');
+    Schema::enableForeignKeyConstraints();
 }
+
+} 

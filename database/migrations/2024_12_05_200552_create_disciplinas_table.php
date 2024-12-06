@@ -8,12 +8,16 @@ class CreateDisciplinasTable extends Migration
 {
     public function up()
     {
-        Schema::create('disciplinas', function (Blueprint $table) {
-            $table->id('id_disciplina');
-            $table->string('nome_disciplina', 100);
-            $table->foreignId('id_curso')->constrained('cursos')->onDelete('cascade');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('disciplinas')) {
+            Schema::create('disciplinas', function (Blueprint $table) {
+                $table->id('id_disciplina'); // Use uma chave primária personalizada, se necessário
+                $table->string('nome_disciplina', 100);
+                $table->foreignId('id_curso') // Define automaticamente como unsignedBigInteger
+                      ->constrained('cursos', 'id_curso') // Relaciona com a coluna correta na tabela 'cursos'
+                      ->onDelete('cascade'); // Configuração de exclusão em cascata
+                $table->timestamps();
+            });
+        }
     }
 
     public function down()

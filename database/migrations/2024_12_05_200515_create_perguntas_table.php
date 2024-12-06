@@ -8,14 +8,15 @@ class CreatePerguntasTable extends Migration
 {
     public function up()
     {
-        Schema::create('perguntas', function (Blueprint $table) {
-            $table->id('id_pergunta'); // Chave primária correta
-            $table->foreignId('id_avaliacao')->constrained('avaliacoes')->onDelete('cascade');
-            $table->text('texto_pergunta');
-            $table->enum('tipo_resposta', ['multipla_escolha', 'texto', 'numerica']);
-            $table->timestamps();
-        });
-        
+        if (!Schema::hasTable('perguntas')) {
+            Schema::create('perguntas', function (Blueprint $table) {
+                $table->id(); // Cria a coluna 'id'
+                $table->foreignId('avaliacao_id')->constrained('avaliacoes')->onDelete('cascade'); // Altera para 'avaliacao_id' para seguir convenções de nomenclatura
+                $table->text('texto_pergunta');
+                $table->enum('tipo_resposta', ['multipla_escolha', 'texto', 'numerica']);
+                $table->timestamps();
+            });
+        }
     }
 
     public function down()

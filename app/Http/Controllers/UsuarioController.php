@@ -2,48 +2,57 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Professor;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
-class ProfessorController extends Controller
+class UsuarioController extends Controller
 {
     public function index()
     {
-        return Professor::with('usuario')->get(); // Retorna todos os professores com seus dados de usuário
+        return Usuario::with('curso')->get();  // Relacionando com a tabela 'cursos'
     }
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'id_usuario' => 'required|exists:usuarios,id_usuario|unique:professores,id_usuario',
-            'titulacao' => 'nullable|string|max:255',
-            'area_especializacao' => 'nullable|string|max:255',
+        $request->validate([
+            'nome' => 'required|string|max:100',
+            'email_institucional' => 'required|email|unique:usuarios,email_institucional',
+            'matricula' => 'required|string|unique:usuarios,matricula',
+            'senha' => 'required|string|min:6',
+            'tipo_usuario' => 'required|in:aluno,tecnico-administrativo',
+            'id_curso' => 'nullable|exists:cursos,id_curso',
+            'turma' => 'nullable|string|max:50',
         ]);
 
-        return Professor::create($validated);
+        return Usuario::create($request->all());
     }
 
     public function show($id)
     {
-        return Professor::with('usuario')->findOrFail($id); // Retorna um professor específico
+        return Usuario::with('curso')->findOrFail($id);
     }
 
     public function update(Request $request, $id)
     {
-        $professor = Professor::findOrFail($id);
-        $validated = $request->validate([
-            'titulacao' => 'sometimes|string|max:255',
-            'area_especializacao' => 'sometimes|string|max:255',
+        $request->validate([
+            'nome' => 'required|string|max:100',
+            'email_institucional' => 'required|email|unique:usuarios,email_institucional,' . $id,
+            'matricula' => 'required|string|unique:usuarios,matricula,' . $id,
+            'senha' => 'nullable|string|min:6',
+            'tipo_usuario' => 'required|in:aluno,tecnico-administrativo',
+            'id_curso' => 'nullable|exists:cursos,id_curso',
+            'turma' => 'nullable|string|max:50',
         ]);
 
-        $professor->update($validated);
-        return $professor;
+        $usuario = Usuario::findOrFail($id);
+        $usuario->update($request->all());
+
+        return $usuario;
     }
 
     public function destroy($id)
     {
-        $professor = Professor::findOrFail($id);
-        $professor->delete();
+        Usuario::destroy($id);
         return response()->noContent();
     }
 }

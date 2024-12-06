@@ -9,48 +9,48 @@ class AvaliacaoController extends Controller
 {
     public function index()
     {
-        return Avaliacao::with('perguntas')->get(); // Inclui as perguntas relacionadas
+        return Avaliacao::all();
     }
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'titulo' => 'required|string|max:255',
+        $request->validate([
+            'titulo' => 'required|string|max:100',
             'descricao' => 'nullable|string',
             'data_inicio' => 'required|date',
-            'data_fim' => 'required|date|after_or_equal:data_inicio',
-            'tipo' => 'required|string',
-            'anonimato' => 'required|boolean',
+            'data_fim' => 'required|date',
+            'tipo' => 'required|in:professor,infraestrutura',
+            'anonimato' => 'nullable|boolean',
         ]);
 
-        return Avaliacao::create($validated);
+        return Avaliacao::create($request->all());
     }
 
     public function show($id)
     {
-        return Avaliacao::with('perguntas')->findOrFail($id);
+        return Avaliacao::findOrFail($id);
     }
 
     public function update(Request $request, $id)
     {
-        $avaliacao = Avaliacao::findOrFail($id);
-        $validated = $request->validate([
-            'titulo' => 'sometimes|string|max:255',
+        $request->validate([
+            'titulo' => 'required|string|max:100',
             'descricao' => 'nullable|string',
-            'data_inicio' => 'sometimes|date',
-            'data_fim' => 'sometimes|date|after_or_equal:data_inicio',
-            'tipo' => 'sometimes|string',
-            'anonimato' => 'sometimes|boolean',
+            'data_inicio' => 'required|date',
+            'data_fim' => 'required|date',
+            'tipo' => 'required|in:professor,infraestrutura',
+            'anonimato' => 'nullable|boolean',
         ]);
 
-        $avaliacao->update($validated);
+        $avaliacao = Avaliacao::findOrFail($id);
+        $avaliacao->update($request->all());
+
         return $avaliacao;
     }
 
     public function destroy($id)
     {
-        $avaliacao = Avaliacao::findOrFail($id);
-        $avaliacao->delete();
+        Avaliacao::destroy($id);
         return response()->noContent();
     }
 }

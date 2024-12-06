@@ -9,40 +9,40 @@ class AvaliacaoProfessorDisciplinaController extends Controller
 {
     public function index()
     {
-        return AvaliacaoProfessorDisciplina::with(['avaliacao', 'disciplinaProfessor'])->get();
+        return AvaliacaoProfessorDisciplina::with(['avaliacao', 'professorDisciplina'])->get();
     }
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'id_avaliacao' => 'required|exists:avaliacoes,id_avaliacao',
+        $request->validate([
+            'id_avaliacao' => 'required|exists:avaliacoes,id',
             'id_disciplina_professor' => 'required|exists:professores_disciplinas,id_disciplina_professor',
         ]);
 
-        return AvaliacaoProfessorDisciplina::create($validated);
+        return AvaliacaoProfessorDisciplina::create($request->all());
     }
 
     public function show($id)
     {
-        return AvaliacaoProfessorDisciplina::with(['avaliacao', 'disciplinaProfessor'])->findOrFail($id);
+        return AvaliacaoProfessorDisciplina::with(['avaliacao', 'professorDisciplina'])->findOrFail($id);
     }
 
     public function update(Request $request, $id)
     {
-        $avaliacaoProfessorDisciplina = AvaliacaoProfessorDisciplina::findOrFail($id);
-        $validated = $request->validate([
-            'id_avaliacao' => 'sometimes|exists:avaliacoes,id_avaliacao',
-            'id_disciplina_professor' => 'sometimes|exists:professores_disciplinas,id_disciplina_professor',
+        $request->validate([
+            'id_avaliacao' => 'required|exists:avaliacoes,id',
+            'id_disciplina_professor' => 'required|exists:professores_disciplinas,id_disciplina_professor',
         ]);
 
-        $avaliacaoProfessorDisciplina->update($validated);
+        $avaliacaoProfessorDisciplina = AvaliacaoProfessorDisciplina::findOrFail($id);
+        $avaliacaoProfessorDisciplina->update($request->all());
+
         return $avaliacaoProfessorDisciplina;
     }
 
     public function destroy($id)
     {
-        $avaliacaoProfessorDisciplina = AvaliacaoProfessorDisciplina::findOrFail($id);
-        $avaliacaoProfessorDisciplina->delete();
+        AvaliacaoProfessorDisciplina::destroy($id);
         return response()->noContent();
     }
 }

@@ -9,7 +9,7 @@ class CreateAvaliacoesTable extends Migration
     public function up()
     {
         Schema::create('avaliacoes', function (Blueprint $table) {
-            $table->id('id_avaliacao');
+            $table->id(); // Cria uma coluna 'id' automaticamente
             $table->string('titulo', 100);
             $table->text('descricao')->nullable();
             $table->date('data_inicio');
@@ -17,8 +17,9 @@ class CreateAvaliacoesTable extends Migration
             $table->enum('tipo', ['professor', 'infraestrutura']);
             $table->boolean('anonimato')->default(true);
             $table->timestamps();
-        });
+         });
     }
+
 
     public function down()
     {
