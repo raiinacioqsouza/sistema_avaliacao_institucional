@@ -2,6 +2,7 @@
 
 // routes/api.php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProfessorController;
@@ -12,29 +13,32 @@ use App\Http\Controllers\ProfessorDisciplinaController;
 use App\Http\Controllers\AvaliacaoProfessorDisciplinaController;
 use App\Http\Controllers\RespostaController;
 
-// Cursos
-Route::apiResource('cursos', CursoController::class);
+// Grupo de rotas protegidas com middleware
+Route::middleware(['auth:sanctum'])->group(function () {
+    // Cursos
+    Route::apiResource('cursos', CursoController::class);
 
-// Usuários
-Route::apiResource('usuarios', UsuarioController::class);
+    // Usuários
+    Route::apiResource('usuarios', UsuarioController::class);
 
-// Professores
-Route::apiResource('professores', ProfessorController::class);
+    // Professores
+    Route::apiResource('professores', ProfessorController::class);
 
-// Avaliações
-Route::apiResource('avaliacoes', AvaliacaoController::class);
+    // Avaliações
+    Route::apiResource('avaliacoes', AvaliacaoController::class);
 
-// Perguntas
-Route::apiResource('perguntas', PerguntaController::class);
+    // Perguntas
+    Route::apiResource('perguntas', PerguntaController::class);
 
-// Disciplinas
-Route::apiResource('disciplinas', DisciplinaController::class);
+    // Disciplinas
+    Route::apiResource('disciplinas', DisciplinaController::class);
 
-// Professores Disciplinas
-Route::apiResource('professores_disciplinas', ProfessorDisciplinaController::class);
+    // Professores Disciplinas
+    Route::apiResource('professores_disciplinas', ProfessorDisciplinaController::class);
 
-// Avaliação Professor Disciplina
-Route::apiResource('avaliacao_professor_disciplina', AvaliacaoProfessorDisciplinaController::class);
+    // Avaliação Professor Disciplina
+    Route::apiResource('avaliacao_professor_disciplina', AvaliacaoProfessorDisciplinaController::class);
 
-// Respostas
-Route::apiResource('respostas', RespostaController::class);
+    // Respostas
+    Route::apiResource('respostas', RespostaController::class);
+});
