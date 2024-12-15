@@ -7,7 +7,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "filament/filament": "2.0.0-beta12",
+        "consoletvs/charts": "dev-main",
+        "filament/filament": "^2.0@beta",
         "laravel/framework": "^11.31",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
@@ -28,7 +29,14 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "exclude-from-classmap": [
+            "vendor/league/flysystem/src/Local/FallbackMimeTypeDetector.php",
+            "vendor/league/flysystem/src/Local/LocalFilesystemAdapter.php",
+            "vendor/league/flysystem/src/Local/LocalFilesystemAdapterTest.php",
+            "vendor/laravel/pint/app/Providers/AppServiceProvider.php"
+        ]
+        
     },
     "autoload-dev": {
         "psr-4": {
