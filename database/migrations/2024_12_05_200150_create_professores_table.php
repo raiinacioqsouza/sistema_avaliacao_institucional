@@ -10,9 +10,11 @@ class CreateProfessoresTable extends Migration
     {
         Schema::create('professores', function (Blueprint $table) {
             $table->id('id_professor');
-            $table->unsignedBigInteger('id_usuario');  // Adiciona a coluna id_usuario
+            $table->unsignedBigInteger('id_usuario'); // Relacionamento com usuários
             $table->foreign('id_usuario')->references('id_usuario')->on('usuarios')->onDelete('cascade');
-            $table->string('especialidade', 100)->nullable();
+            $table->string('titulacao', 100)->nullable(); // Coluna para titulação
+            $table->string('area_especializacao', 150)->nullable(); // Coluna para área de especialização
+            $table->string('especialidade', 100)->nullable(); // Caso seja necessário manter
             $table->timestamps();
         });
     }
