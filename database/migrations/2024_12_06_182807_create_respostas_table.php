@@ -9,12 +9,15 @@ class CreateRespostasTable extends Migration
     public function up()
     {
         Schema::create('respostas', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id('id_resposta');
-            // Alterar a chave estrangeira para apontar para 'id_usuario' na tabela 'usuarios'
-            $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('id_usuario'); // Define explicitamente como unsignedBigInteger
             $table->foreign('id_usuario')->references('id_usuario')->on('usuarios')->onDelete('cascade');
             
-            $table->foreignId('id_pergunta')->constrained('perguntas')->onDelete('cascade');
+            // Definindo explicitamente a coluna e a chave estrangeira
+            $table->unsignedBigInteger('id_pergunta'); // Define explicitamente a coluna id_pergunta
+            $table->foreign('id_pergunta')->references('id_pergunta')->on('perguntas')->onDelete('cascade'); // Adiciona a chave estrangeira
+
             $table->text('resposta');
             $table->timestamp('data_resposta')->useCurrent();
             $table->timestamps();
@@ -22,10 +25,9 @@ class CreateRespostasTable extends Migration
     }
 
     public function down()
-{
-    Schema::disableForeignKeyConstraints();
-    Schema::dropIfExists('respostas');
-    Schema::enableForeignKeyConstraints();
+    {
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('respostas');
+        Schema::enableForeignKeyConstraints();
+    }
 }
-
-} 

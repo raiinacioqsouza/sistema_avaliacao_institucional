@@ -17,8 +17,6 @@ class RespostaFactory extends Factory
             'id_usuario' => Usuario::inRandomOrder()->value('id_usuario'), // Seleciona um usuário existente
             'id_pergunta' => Pergunta::inRandomOrder()->value('id_pergunta'), // Seleciona uma pergunta existente
             'resposta' => $this->faker->text,
-            'id_disciplina_professor' => null, // Ajustar caso necessário
         ];
     }
 }
-

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "647b08cd5ed5064857cb6f44529ec38e",
+    "content-hash": "b640bee64a5457afb34d1b51263ac678",
     "packages": [
         {
             "name": "balping/json-raw-encoder",
@@ -8699,7 +8699,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "consoletvs/charts": 20,
-        "filament/filament": 10
+        "filament/filament": 10,
+        "tymon/jwt-auth": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             UsuarioSeeder::class,
             ProfessorSeeder::class,
             DisciplinaSeeder::class,
+            PerguntaSeeder::class,
             RespostaSeeder::class,
         ]);
     }

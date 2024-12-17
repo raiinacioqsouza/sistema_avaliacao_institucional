@@ -21,7 +21,7 @@ class Resposta extends Model
 
     public function pergunta()
     {
-        return $this->belongsTo(Pergunta::class, 'id_pergunta', 'id_pergunta');
+        return $this->belongsTo(Pergunta::class, 'id_pergunta', 'id'); // 'id' é a chave primária de 'perguntas'
     }
 
     public function usuario()

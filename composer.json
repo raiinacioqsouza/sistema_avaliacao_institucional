@@ -13,7 +13,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "spatie/laravel-stats": "^2.3",
-        "tymon/jwt-auth": "^2.1"
+        "tymon/jwt-auth": "2.x-dev"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

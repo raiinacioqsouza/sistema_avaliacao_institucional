@@ -9,6 +9,6 @@ class RespostaSeeder extends Seeder
 {
     public function run()
     {
-        Resposta::factory()->count(100)->create();
+        Resposta::factory()->count(10)->create();
     }
 }
