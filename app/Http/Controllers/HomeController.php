@@ -8,6 +8,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home'); // Retorna a view 'home.blade.php'
+        return response()->json(['message' => 'Página inicial'], 200);
+    }
+
+    public function store(Request $request)
+    {
+        return response()->json(['message' => 'Dados recebidos com sucesso'], 200);
     }
 }
