@@ -1206,12 +1206,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "a30619310dd739c22f561579c3de07f33d109612"
+                "reference": "df198665a936d028e7dea3b9850d9f69e0015934"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/a30619310dd739c22f561579c3de07f33d109612",
-                "reference": "a30619310dd739c22f561579c3de07f33d109612",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/df198665a936d028e7dea3b9850d9f69e0015934",
+                "reference": "df198665a936d028e7dea3b9850d9f69e0015934",
                 "shasum": ""
             },
             "require": {
@@ -1247,7 +1247,7 @@
                 "symfony/console": "^7.0.3",
                 "symfony/error-handler": "^7.0.3",
                 "symfony/finder": "^7.0.3",
-                "symfony/http-foundation": "^7.0.3",
+                "symfony/http-foundation": "^7.2.0",
                 "symfony/http-kernel": "^7.0.3",
                 "symfony/mailer": "^7.0.3",
                 "symfony/mime": "^7.0.3",
@@ -1414,7 +1414,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-12-14T22:35:25+00:00"
+            "time": "2024-12-17T22:33:46+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -1482,12 +1482,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sanctum.git",
-                "reference": "698064236a46df016e64a7eb059b1414e0b281df"
+                "reference": "adc4b7d2a2a0dddc06ff4c8ec90fa6c6c840a6cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/698064236a46df016e64a7eb059b1414e0b281df",
-                "reference": "698064236a46df016e64a7eb059b1414e0b281df",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/adc4b7d2a2a0dddc06ff4c8ec90fa6c6c840a6cf",
+                "reference": "adc4b7d2a2a0dddc06ff4c8ec90fa6c6c840a6cf",
                 "shasum": ""
             },
             "require": {
@@ -1539,20 +1539,20 @@
                 "issues": "https://github.com/laravel/sanctum/issues",
                 "source": "https://github.com/laravel/sanctum"
             },
-            "time": "2024-12-11T16:40:21+00:00"
+            "time": "2024-12-17T18:26:59+00:00"
         },
         {
             "name": "laravel/serializable-closure",
-            "version": "dev-master",
+            "version": "2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "0d8d3d8086984996df86596a86dea60398093a81"
+                "reference": "94d8b7297212a825ce6f224969429d004f685374"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/0d8d3d8086984996df86596a86dea60398093a81",
-                "reference": "0d8d3d8086984996df86596a86dea60398093a81",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/94d8b7297212a825ce6f224969429d004f685374",
+                "reference": "94d8b7297212a825ce6f224969429d004f685374",
                 "shasum": ""
             },
             "require": {
@@ -1601,7 +1601,7 @@
                 "issues": "https://github.com/laravel/serializable-closure/issues",
                 "source": "https://github.com/laravel/serializable-closure"
             },
-            "time": "2024-11-19T01:38:44+00:00"
+            "time": "2024-12-17T18:27:16+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1672,34 +1672,31 @@
         },
         {
             "name": "lcobucci/clock",
-            "version": "2.3.x-dev",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/clock.git",
-                "reference": "c7aadcd6fd97ed9e199114269c0be3f335e38876"
+                "reference": "fb533e093fd61321bfcbac08b131ce805fe183d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/clock/zipball/c7aadcd6fd97ed9e199114269c0be3f335e38876",
-                "reference": "c7aadcd6fd97ed9e199114269c0be3f335e38876",
+                "url": "https://api.github.com/repos/lcobucci/clock/zipball/fb533e093fd61321bfcbac08b131ce805fe183d3",
+                "reference": "fb533e093fd61321bfcbac08b131ce805fe183d3",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.1.0 || ~8.2.0",
-                "stella-maris/clock": "^0.1.7"
-            },
-            "provide": {
-                "psr/clock-implementation": "1.0"
+                "php": "^8.0",
+                "stella-maris/clock": "^0.1.4"
             },
             "require-dev": {
                 "infection/infection": "^0.26",
-                "lcobucci/coding-standard": "^9.0",
-                "phpstan/extension-installer": "^1.2",
-                "phpstan/phpstan": "^1.9.4",
-                "phpstan/phpstan-deprecation-rules": "^1.1.1",
-                "phpstan/phpstan-phpunit": "^1.3.2",
-                "phpstan/phpstan-strict-rules": "^1.4.4",
-                "phpunit/phpunit": "^9.5.27"
+                "lcobucci/coding-standard": "^8.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "phpunit/phpunit": "^9.5"
             },
             "default-branch": true,
             "type": "library",
@@ -1721,7 +1718,7 @@
             "description": "Yet another clock abstraction",
             "support": {
                 "issues": "https://github.com/lcobucci/clock/issues",
-                "source": "https://github.com/lcobucci/clock/tree/2.3.0"
+                "source": "https://github.com/lcobucci/clock/tree/2.2.0"
             },
             "funding": [
                 {
@@ -1733,7 +1730,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-12-19T14:38:11+00:00"
+            "time": "2022-04-19T19:34:17+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -2197,12 +2194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/uri.git",
-                "reference": "81fb5145d2644324614cc532b28efd0215bda430"
+                "reference": "c01d87e3c17d4bb05b35432c1004f610da2e79ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/uri/zipball/81fb5145d2644324614cc532b28efd0215bda430",
-                "reference": "81fb5145d2644324614cc532b28efd0215bda430",
+                "url": "https://api.github.com/repos/thephpleague/uri/zipball/c01d87e3c17d4bb05b35432c1004f610da2e79ce",
+                "reference": "c01d87e3c17d4bb05b35432c1004f610da2e79ce",
                 "shasum": ""
             },
             "require": {
@@ -2272,7 +2269,7 @@
                 "docs": "https://uri.thephpleague.com",
                 "forum": "https://thephpleague.slack.com",
                 "issues": "https://github.com/thephpleague/uri-src/issues",
-                "source": "https://github.com/thephpleague/uri/tree/7.5.1"
+                "source": "https://github.com/thephpleague/uri/tree/master"
             },
             "funding": [
                 {
@@ -2280,7 +2277,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-08T08:40:02+00:00"
+            "time": "2024-12-17T16:30:38+00:00"
         },
         {
             "name": "league/uri-interfaces",
@@ -5523,12 +5520,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "656c16cd1c61d2437b434d99b8b938742d9afe95"
+                "reference": "0415b1f7beee5bedd7b5aea82a5aed69a96ce885"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/656c16cd1c61d2437b434d99b8b938742d9afe95",
-                "reference": "656c16cd1c61d2437b434d99b8b938742d9afe95",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/0415b1f7beee5bedd7b5aea82a5aed69a96ce885",
+                "reference": "0415b1f7beee5bedd7b5aea82a5aed69a96ce885",
                 "shasum": ""
             },
             "require": {
@@ -5596,7 +5593,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-12-14T16:08:18+00:00"
+            "time": "2024-12-16T08:20:38+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -6106,19 +6103,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tijsverkoyen/CssToInlineStyles.git",
-                "reference": "97b4134400745eacabe50513f5b4d52e4b9356df"
+                "reference": "e2aa8c9ce8efaa9cae73cb77816fa8aacf243090"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/97b4134400745eacabe50513f5b4d52e4b9356df",
-                "reference": "97b4134400745eacabe50513f5b4d52e4b9356df",
+                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/e2aa8c9ce8efaa9cae73cb77816fa8aacf243090",
+                "reference": "e2aa8c9ce8efaa9cae73cb77816fa8aacf243090",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-libxml": "*",
-                "php": "^7.2 || ^8.0",
-                "symfony/css-selector": "^2.7 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0"
+                "php": "^7.2.5 || ^8.0",
+                "symfony/css-selector": "^5.4 || ^6.0 || ^7.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5.21 || ^9.5.10"
@@ -6127,7 +6124,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
@@ -6152,7 +6149,7 @@
                 "issues": "https://github.com/tijsverkoyen/CssToInlineStyles/issues",
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/master"
             },
-            "time": "2024-07-06T12:23:57+00:00"
+            "time": "2024-12-17T17:33:45+00:00"
         },
         {
             "name": "tymon/jwt-auth",

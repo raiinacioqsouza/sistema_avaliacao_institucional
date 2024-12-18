@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/resources/css/SAdmin.css">
+    <link rel="stylesheet" href="{{ asset('/css/SAdmin.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Super Admin</title>
 </head>
-<body>
+<body class="bg-light">
 
-   <div class="main-container">
+   <div >
     
-        <header class="sadmin-header">
-            <div class="sadmin-logo-container">
-                <img src="\resources\imgs\logos\logo_ifnmg_sem_letras.png" class="sadmin-ifnmg-logo" alt="Logo IFNMG">
-                <div class="sadmin-text-container">
-                    <h2 class="sadmin-logo-title">IFNMG - Campus Almenara</h2>
-                    <h2 class="sadmin-logo-description">Sistema de Avaliação Institucional</h2>
+        <header class="sadmin-header bg-dark d-flex justify-content-between align-items-center p-5 pb-5">
+            <div class="d-flex align-items-center">
+                <img src="{{url('/imgs/logos/logo_ifnmg_sem_letras.png')}}" class="ms-4" style="width: 3rem" alt="Logo IFNMG">
+                <div class="ml-3 text-white">
+                <h2 class="responses-logo-title mb-1 responsive-title">IFNMG - Campus Almenara</h2>
+                <h2 class="responses-logo-description mb-0 responsive-description">Sistema de Avaliação Institucional</h2>
                 </div>
 
                 
             </div>
 
-            <div class="sadmin-user-menu-container">
-                <img src="\resources\imgs\icons\User_02.svg" class="sadmin-user-icon" alt="Ícone Menu Usuario">
-                <p class="samdin-user-text">Usuário Admin</p>
-            </div>
+        <div class="d-flex align-items-center text-white">
+            <img src="{{url('/imgs/icons/User_02.svg')}}" class="responses-user-icon mr-2" alt="Ícone Menu Usuario">
+            <p class="mb-0 responsive-user">Usuário Admin</p>
+        </div>
             
         </header>
         <!-- <nav class="home-navbar">

@@ -8,19 +8,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-light">
-    <header class="d-flex justify-content-between align-items-center p-3 bg-dark text-white">
+    <!-- <header class="d-flex justify-content-between align-items-center p-3 bg-dark text-white">
         <div class="d-flex align-items-center">
-            <img src="/resources/imgs/logos/logo_ifnmg_sem_letras.png" class="ms-4" style="width: 3rem" alt="Logo IFNMG">
+            <img src="{{url('/imgs/logos/logo_ifnmg_sem_letras.png')}}" class="ms-4" style="width: 3rem" alt="Logo IFNMG">
             <div class="ms-3">
                 <h2 class="mb-0">IFNMG - Campus Almenara</h2>
                 <h3 class="mb-0">Sistema de Avaliação Institucional</h3>
             </div>
         </div>
         <div class="d-flex align-items-center me-4">
-            <img src="/resources/imgs/icons/User_02.svg" class="me-2" style="width: 2rem" alt="Ícone Usuário">
+            <img src="{{url('/imgs/icons/User_02.svg')}}" class="me-2" style="width: 2rem" alt="Ícone Usuário">
             <p class="mb-0">Usuário Admin</p>
         </div>
-    </header>
+    </header> -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark d-flex justify-content-between align-items-center p-3 text-white">
+  <a class="navbar-brand" href="#"><img src="{{url('/imgs/logos/logo_ifnmg_sem_letras.png')}}" class="ms-4" style="width: 3rem" alt="Logo IFNMG"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarNav">
+    <ul class="navbar-nav text-white">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
     <main class="container my-4">
         <section class="bg-white p-4 rounded shadow-sm">

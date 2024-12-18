@@ -13,7 +13,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="text-center mb-4">
-                    <img src="/resources/imgs/logos/ifnmg.png" alt="Logo IFNMG Campus Almenara" class="img-fluid" style="max-width: 150px;">
+                    <img src="{{url('/images/ifnmg.png')}}" alt="Logo IFNMG Campus Almenara" class="img-fluid" style="max-width: 150px;">
                 </div>
                 <div class="card shadow-sm">
                     <div class="card-body">

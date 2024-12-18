@@ -25,7 +25,7 @@
         >
             <div class="d-flex align-items-center">
                 <img
-                    src="/resources/imgs/logos/logo_ifnmg_sem_letras.png"
+                    src="{{url('/imgs/logos/logo_ifnmg_sem_letras.png')}}"
                     class="ms-4"
                     style="width: 3rem"
                     alt="Logo IFNMG"
@@ -37,7 +37,7 @@
             </div>
             <div class="d-flex align-items-center me-5">
                 <img
-                    src="/resources/imgs/icons/User_02.svg"
+                    src="{{url('/imgs/icons/User_02.svg')}}"
                     class="me-2"
                     style="width: 2rem"
                     alt="Ícone Menu Usuario"
@@ -49,7 +49,7 @@
         <section class="container my-4">
             <div class="d-flex align-items-center mb-3">
                 <img
-                    src="/resources/imgs/icons/Notebook_black.svg"
+                    src="{{url('/imgs/icons/Notebook_black.svg')}}"
                     class="me-3"
                     style="width: 3rem"
                     alt="Ícone Lista"
