@@ -16,7 +16,7 @@
         "tymon/jwt-auth": "2.x-dev"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.23",
+        "fakerphp/faker": "2.0.x-dev",
         "laravel/pail": "^1.1",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",

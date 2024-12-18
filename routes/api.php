@@ -12,6 +12,7 @@ use App\Http\Controllers\DisciplinaController;
 use App\Http\Controllers\ProfessorDisciplinaController;
 use App\Http\Controllers\AvaliacaoProfessorDisciplinaController;
 use App\Http\Controllers\RespostaController;
+use App\Http\Controllers\AuthController;
 
 // Grupo de rotas protegidas com middleware
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -41,4 +42,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // Respostas
     Route::apiResource('respostas', RespostaController::class);
+
+    Route::post('login', [AuthController::class, 'login']);
+
+    Route::post('logout', [AuthController::class, 'logout']);
+
+    Route::get('me', [AuthController::class, 'me'])->middleware('auth:api');
+    
 });
