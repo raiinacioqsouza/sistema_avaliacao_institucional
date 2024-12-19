@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+
 
 // Rota para a página inicial (GET)
 Route::get('/', function () {
@@ -18,4 +20,6 @@ Route::get('/home', function () {
 });
 
 // Rota POST /home
-Route::post('/home', [HomeController::class, 'store']);
+
+
+

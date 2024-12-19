@@ -4,24 +4,69 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class LoginController extends Controller
 {
     public function authenticate(Request $request)
     {
-        // Validação
-        $validated = $request->validate([
-            'user' => 'required|string',
-            'pass' => 'required|string|min:8',
-        ]);
+     // Validação dos dados de entrada
+    $validated = $request->validate([
+        'user' => 'required|email',  // 'user' será o email institucional
+        'pass' => 'required|string', // 'pass' será a senha
+    ]);
 
-        // Lógica de autenticação (exemplo simplificado)
-        if ($validated) {
-            // Se os dados forem válidos, redirecione ou faça a autenticação
-            return redirect()->route('home')->with('success', 'Login bem-sucedido!');
+    // Tentando autenticar com o 'Auth::attempt'
+    if (Auth::attempt(['email_institucional' => $validated['user'], 'senha' => $validated['pass']])) {
+        // Se a autenticação for bem-sucedida, gera um token para o usuário
+        /** @var \App\Models\MyUserModel $user **/
+        $user = Auth::user();
+        $token = $user->createToken('authToken')->plainTextToken;
+
+        return response()->json([
+            'message' => 'Login bem-sucedido!',
+            'user' => $user,
+            'token' => $token,
+        ], 200);
+    }
+
+    // Caso o 'Auth::attempt' falhe, verifica se o usuário existe e a senha está correta
+    $user = User::where('email_institucional', $validated['user'])->first();
+
+    if ($user && Hash::check($validated['pass'], $user->senha)) {
+        // Se a senha estiver correta, gera um token para o usuário
+        $token = $user->createToken('authToken')->plainTextToken;
+
+        return response()->json([
+            'message' => 'Login bem-sucedido!',
+            'user' => $user,
+            'token' => $token,
+        ], 200);
+    }
+
+    // Se as credenciais não forem válidas
+    return response()->json([
+        'error' => 'Credenciais inválidas',
+    ], 401);
+    }
+
+    public function logout(Request $request)
+    {
+        $user = $request->user();
+
+        if (!$user) {
+            return response()->json(['error' => 'Usuário não autenticado'], 401);
         }
 
-        // Caso contrário, retorne com erros
-        return redirect()->back()->withErrors(['login' => 'Credenciais inválidas']);
+        // Revogando todos os tokens do usuário
+        $user->tokens()->delete();
+
+        return response()->json(['message' => 'Logout realizado com sucesso'], 200);
     }
 }
+
+
+
