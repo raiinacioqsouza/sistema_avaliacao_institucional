@@ -9,6 +9,16 @@ Route::get('/', function () {
     return view('home');  // Retorna a view 'home.blade.php'
 });
 
+Route::get('/Responses', function () {
+    return view('Responses');  // Retorna a view 'home.blade.php'
+});
+
+Route::get('/CommonUser', function () {
+    return view('CommonUser');  // Retorna a view 'home.blade.php'
+});
+
+
+
 // Rota para ação de API com POST em /home
 Route::post('/home', function () {
     return response()->json(['message' => 'Dados recebidos com sucesso'], 200);

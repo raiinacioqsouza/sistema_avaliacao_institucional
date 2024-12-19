@@ -54,6 +54,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::middleware(['auth:sanctum'])->group(function () {
     // Outras rotas que exigem autenticação
     Route::post('/logout-teste', [LoginController::class, 'logout']);
+    
 });
 
 Route::post('/login', function (Request $request) {
