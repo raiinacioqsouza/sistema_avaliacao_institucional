@@ -13,9 +13,6 @@ use App\Http\Controllers\ProfessorDisciplinaController;
 use App\Http\Controllers\AvaliacaoProfessorDisciplinaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RespostaController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 
 // Grupo de rotas protegidas com middleware
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -45,56 +42,4 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // Respostas
     Route::apiResource('respostas', RespostaController::class);
-
-
-    
 });
-
-Route::post('/login', function (Request $request) {
-    $credentials = $request->only('user', 'pass');
-
-    if(Auth::attempt($credentials)) {
-        $user = $request->user();
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-        return response()->json([
-            "acess_token" => $token,
-            "token_type" => 'Bearer'
-        ]);
-
-    };
-    
-    return response()->json([
-        "message" => "Usuário inválido!"
-    ]);
-});
-
-//     Route::post('/tokens/create', function (Request $request) {
-//        $token = $request->user()->createToken($request->token_name);
-
-//        return ['token' => $token->plainTextToken];
-
- 
-   
-//    });
-
-Route::post('/loginteste', [LoginController::class, 'authenticate']);
-Route::post('/create-user', [UsuarioController::class, 'store']);
-Route::put('/update-user', [UsuarioController::class, 'update']);
-Route::post('/logout-teste', [LoginController::class, 'logout']);
-
-
-
-Route::get('/home', function () {
-   return response()->json(['message' => 'Página iniciald'], 200);
-});
-
-
-
-Route::get('/test-users', function () {
-    $users = User::all();
-    return response()->json($users);
-});
-
-
-
