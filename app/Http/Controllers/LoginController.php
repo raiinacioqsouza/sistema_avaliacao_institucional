@@ -54,18 +54,23 @@ class LoginController extends Controller
     }
 
     public function logout(Request $request)
-    {
-        $user = $request->user();
+{
+    // Obtém o usuário autenticado com o token de autenticação
+    $user = $request->user();
 
-        if (!$user) {
-            return response()->json(['error' => 'Usuário não autenticado'], 401);
-        }
-
-        // Revogando todos os tokens do usuário
-        $user->tokens()->delete();
-
-        return response()->json(['message' => 'Logout realizado com sucesso'], 200);
+    if (!$user) {
+        // Se não houver usuário autenticado, retorna erro
+        return response()->json(['error' => 'Usuário não autenticado'], 401);
     }
+
+    // Revogando todos os tokens do usuário
+    $user->tokens->each(function ($token) {
+        $token->delete(); // Deleta cada token associado ao usuário
+    });
+
+    // Retorna uma resposta de sucesso
+    return response()->json(['message' => 'Logout realizado com sucesso'], 200);
+}
 }
 
 
