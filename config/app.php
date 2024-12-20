@@ -159,7 +159,6 @@ return [
          */
 
         App\Providers\RouteServiceProvider::class,  // Aqui você adiciona o RouteServiceProvider
-        Filament\FilamentServiceProvider::class,
     ],
 
 ];
